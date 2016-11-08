@@ -6,6 +6,13 @@ env:
 services:
 - docker
 
+env:
+  global:
+    - DOCKER_VERSION=1.9.1
+
+before_install:
+  - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y docker-engine=${DOCKER_VERSION}
+
 script:
 - curl https://raw.githubusercontent.com/nkubala/runtimes-common/travis_test/structure_tests/ext_run.sh > ext_run.sh
 - chmod +x ext_run.sh

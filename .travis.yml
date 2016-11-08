@@ -2,14 +2,13 @@ sudo: required
 
 env:
   - IMAGE_NAME="golang:staging"
-  - DOCKER_VERSION="1.9.1-0~trusty"
 
 services:
 - docker
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -y docker-engine="$DOCKER_VERSION"
+  - sudo apt-get install -y docker-engine=1.9.1-0~trusty
 
 script:
 - curl https://raw.githubusercontent.com/nkubala/runtimes-common/travis_test/structure_tests/ext_run.sh > ext_run.sh

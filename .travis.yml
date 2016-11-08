@@ -1,7 +1,9 @@
 sudo: required
 
 env:
-  - IMAGE_NAME="golang:staging"
+  # - IMAGE_NAME="golang:staging"
+  - IMAGE_NAME="gcr.io/nick-cloudbuild/check_if_tag_exists"
+
 
 services:
 - docker
@@ -17,6 +19,6 @@ services:
 script:
 - curl https://raw.githubusercontent.com/nkubala/runtimes-common/travis_test/structure_tests/ext_run.sh > ext_run.sh
 - chmod +x ext_run.sh
-- docker version
-- docker build -t "$IMAGE_NAME" -q base/
+# - docker version
+# - docker build -t "$IMAGE_NAME" -q base/
 - ./ext_run.sh -i "$IMAGE_NAME" -v --config test/test_config.json
